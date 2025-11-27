@@ -94,7 +94,7 @@ def horas_semanales(request):
                 'message': 'Debe proporcionar exactamente 7 valores para horasPorDia'
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        # Ciclo para recorrer el arreglo y calcular total
+       
         total_horas = 0
         for horas in horas_por_dia:
             if not isinstance(horas, (int, float)) or horas < 0:
@@ -106,7 +106,7 @@ def horas_semanales(request):
         
         promedio = total_horas / 7
         
-        # Condicionales para evaluar el promedio
+       
         if promedio < 1:
             mensaje = "Estás estudiando muy poco"
         elif 1 <= promedio <= 3:
@@ -145,7 +145,7 @@ def evaluacion_aprobacion(request):
                 'message': 'Debe proporcionar la nota mínima'
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        # Ciclo para procesar las notas
+        
         suma_notas = 0
         for nota in notas:
             if not isinstance(nota, (int, float)):
@@ -157,7 +157,6 @@ def evaluacion_aprobacion(request):
         
         promedio = suma_notas / len(notas)
         
-        # Condicional para determinar aprobación
         if promedio >= nota_minima:
             estado = "Aprobado"
             mensaje = f"¡Felicidades! Has aprobado con un promedio de {promedio:.2f}"
